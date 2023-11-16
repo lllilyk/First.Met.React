@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "./Book";
+import Book from "../Book";
 
 // Library 컴포넌트는 총 3개의 Book 컴포넌트를 랜더링하고 있음
 function Library(props){

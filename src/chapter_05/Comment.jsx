@@ -44,10 +44,8 @@ function Comment(props){
             </div>
 
             <div style={styles.contentContainer}>
-                <span style={styles.nameText}>윰니</span>
-                <span style={styles.commentText}>
-                    내가 만든 첫 리액트 함수 컴포넌트
-                </span>
+                <span style={styles.nameText}>{props.name}</span>
+                <span style={styles.commentText}>{props.comment}</span>
             </div>
         </div>
     );

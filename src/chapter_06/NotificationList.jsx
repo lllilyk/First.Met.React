@@ -20,7 +20,7 @@ class NotificationList extends React.Component {
         super(props);
 
         this.state={
-            notification: [],
+            notifications: [],
         };
     }
 

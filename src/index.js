@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import NotificationList from './chapter_06/NotificationList';
 
+const rootNode = document.getElementById('root');
+const root = ReactDOM.createRoot(rootNode);
+
 setInterval(() => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <NotificationList/>
-    </React.StrictMode>,
-    document.getElementById('root')
+  root.render(
+    <NotificationList />
   );
 }, 1000);
 

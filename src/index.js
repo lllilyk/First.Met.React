@@ -8,12 +8,10 @@ import NotificationList from './chapter_06/NotificationList';
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
-setInterval(() => {
   root.render(
     <NotificationList />
   );
-}, 1000);
-
+  
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Accommodate from './chapter_07/Accommodate';
+import SignUp from './chapter_11/SignUp';
 
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <Accommodate />
+    <SignUp />
   );
 
 // If you want to start measuring performance in your app, pass a function

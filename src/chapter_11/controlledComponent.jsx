@@ -21,7 +21,7 @@ function NameForm(props) {
     return(
         <form onSubmit={handleSubmit}>
             <label>
-                이름:
+                이름:22
                 <input type="text" value={value} onChange={handleChange} />
             </label>
             <button type="submit">제출</button>

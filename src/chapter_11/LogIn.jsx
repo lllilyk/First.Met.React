@@ -14,19 +14,24 @@ function LogIn(props){
 
     const handleSubmitButton = (event) => {
         alert(`이메일 : ${email}`);
+        alert(`비밀번호 : ${password}`);
         event.preventDefault();
     };
 
     return(
         <form onSubmit={handleSubmitButton}>
-            <label>
-                이메일 :
+            <div>
+                <label htmlFor="email">이메일</label>
+            </div> 
+            <div>   
                 <input type="email" value={email} onChange={handleChangeEmail} />
-            </label>
-            <label>
-                비밀번호 :
+            </div>
+            <div>
+                <label htmlFor="password">비밀번호</label>
+            </div>
+            <div>    
                 <input type="password" value={password} onChange={handleChangePassword} />
-            </label>
+            </div>
             <button type="submit">로그인</button>
         </form>
     );

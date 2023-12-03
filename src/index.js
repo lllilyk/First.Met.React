@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LogIn from './chapter_11/LogIn';
+import MainPage from './chapter_15/MainPage';
 
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <LogIn />
+    <MainPage />
   );
 
 // If you want to start measuring performance in your app, pass a function

@@ -10,7 +10,11 @@
 <button onClick={this.deleteItem.bind(this, id)}>삭제하기</button>
 */
 
-// Function Component에서 사용하는 방식 
+
+// Function Component에서 사용하는 방식 - arrow function을 사용하여 정의
+/* const handleClick = () => {
+    setIsToggleOn((isToggleOn) => !isToggleOn);
+    }*/
 function MyButton(props){
     const handleDelete = (id, event) => {
         console.log(id, event.target);

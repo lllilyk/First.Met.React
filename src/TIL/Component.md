@@ -1,16 +1,12 @@
-## Component 🍙
+## Component
 
 🖍️ 컴포넌트의 이름을 지을 때 유의해야 할 중요한 점!
 - 컴포넌트의 이름은 항상 ⭐대문자⭐로 시작해야 한다는 것
 - React는 소문자로 시작하는 컴포넌트를 DOM 태그로 인식하기 때문
 <br />
-예를 들어, div나 span과 같이 사용하는 것은 내장 컴포넌트라는 것을 뜻하며, 
-<br />
-span과 같은 문자열 형태로 react.creatElement에 전달됨. 
+예를 들어, div나 span과 같이 사용하는 것은 내장 컴포넌트라는 것을 뜻하며, span과 같은 문자열 형태로 react.creatElement에 전달됨. 
 
-- 대문자로 시작하는 Foo와 같은 경우에는 react.createElement Foo 형태로 컴파일되며, 
-<br />
-javascript 파일 내에서 사용자가 정의헀거나 임포트한 컴포넌트를 가리킴
+- 대문자로 시작하는 Foo와 같은 경우에는 react.createElement Foo 형태로 컴파일되며, javascript 파일 내에서 사용자가 정의헀거나 임포트한 컴포넌트를 가리킴
 
 <br />
 
@@ -48,7 +44,7 @@ javascript 파일 내에서 사용자가 정의헀거나 임포트한 컴포넌�
     ```
 
 - 위 코드에서는 Welcome이라는 함수 컴포넌트를 선언하고 있음
-- Welcome name="윰니" 라는 값을 가진 element를 파라미터로 해서 react-dom.render 함수를 호출함
+- Welcome name="props" 라는 값을 가진 element를 파라미터로 해서 react-dom.render 함수를 호출함
 2. React는 Welcome 컴포넌트에 name 윰니라는 props를 넣어서 호출하고, 그 결과로 React Element가 생성됨. 
 3. 이렇게 생성된 element는 최종적으로 React DOM을 통해 실제 DOM에 효과적으로 업데이트 됨
 - 우리가 브라우저를 통해서 볼 수 있게 됨. 

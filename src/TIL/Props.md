@@ -1,4 +1,4 @@
-### React Props 🧇
+## Props 🧇
 Component가 붕어빵 틀이라면, elements는 각 붕어빵들(팥붕, 슈붕), props는 붕어빵 속 팥, 슈크림!
 <br />
 즉, 같은 React component에서 눈에 보이는 글자나 색 등의 속성을 바꾸고 싶을 때 사용하는 컴포넌트의 속 재료
@@ -44,6 +44,7 @@ function App(props) {
 위 코드에는 App 컴포넌트 안에서 Profile 컴포넌트를 사용하고 있고,
 <br />
 Profile 컴포넌트에 name, introduction, viewCount라는 3가지 속성을 넣어주었음
+
 <br />
 
 📌 각 속성에 값을 넣을때 중괄호를 사용한 것과 사용하지 않은 것의 차이는 무엇일까?

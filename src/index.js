@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LandingPage from './chapter_09/LandingPage';
-
+import CommentList from './practice_05/CommentList';
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <LandingPage />
+    <CommentList />
   );
 
 // If you want to start measuring performance in your app, pass a function

@@ -27,6 +27,8 @@ class NotiList extends React.Component {
         };
     }
 
+    // 알림추가가 모두 끝나면 notifications 배열을 모두 비우도록 함
+    // : componentWillUnmount() 함수가 호출되고, 모든 컴포넌트가 Unmount됨
     componentDidMount() {
         const { notifications } = this.state;
         timer = setInterval(() => {
@@ -37,6 +39,9 @@ class NotiList extends React.Component {
                     notifications: notifications,
                 });
             } else {
+                this.setState({
+                    notifications: [],
+                });
                 clearInterval(timer);
             }
         }, 1000);

@@ -1,5 +1,5 @@
 function UserStatus(props) {
-    const isOnline = useUserStatus(props.user.id);
+    const isOnline = useUserStatus(props.userId);
 
     if(isOnline === null) {
         return '대기중...';
@@ -8,7 +8,7 @@ function UserStatus(props) {
 }
 
 function UserListItem(props){
-    const isOnline = useUserStatus(props.user.id);
+    const isOnline = useUserStatus(props.userId);
 
     return(
         <li style={{ color : isOnline ? 'green' : 'black' }}>

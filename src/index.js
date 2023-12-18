@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import NotiList from './practice_06/NotiList';
+import Accommodate from './practice_07/Accommodate';
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <NotiList />
+    <Accommodate />
   );
 
 // If you want to start measuring performance in your app, pass a function

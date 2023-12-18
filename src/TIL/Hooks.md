@@ -477,7 +477,7 @@ function ParentComponent(props) {
     
     부모 컴포넌트가 다시 렌더링이 될 때마다, 자식 컴포넌트도 다시 렌더링 됨. 
 
-- but, useCallback() Hook을 사용하면 특정 변수의 값이 변한 경우에만 함수를 다시 정의하게 되므로,
+- but, ✅useCallback() Hook을 사용하면 특정 변수의 값이 변한 경우에만✅ 함수를 다시 정의하게 되므로,
 
     함수가 다시 정의되지 않는 경우에는 자식 컴포넌트도 재렌더링이 일어나지 않음. 
 
@@ -511,3 +511,65 @@ function ParentComponent(props) {
         };
     ```
 
+
+<br />
+
+## useRef()
+Reference를 사용하기 위한 Hook
+
+- React에서 Reference란, '특정 컴포넌트에 접근할 수 있는 객체'를 의미함 
+- useRef() Hook은 이 Reference 객체를 반환함. 
+
+<br />
+
+- refObject.current
+    - Reference 객체에는 current(.current)라는 속성이 있는데 이는 현재 레퍼런스(참조)하고 있는 element를 의미한다고 보면 됨
+
+<br />
+
+- 🔻 useRef() 사용법 🔻
+    ```javascript
+    const refContainer = useRef(초기값);
+    ```
+
+    - ✅파라미터로 초기값을 넣으면 해당 초기값으로 초기화된 reference 객체를 반환함✅
+        - 초기값이 null이라면, current의 값이 null인 reference 객체가 반환되는 것.
+
+    - 이렇게 반환된 reference 객체는 컴포넌트의 life time 전체🖍️에 걸쳐서 유지됨. 
+
+<br />
+<br />
+
+- ⭕ useRef()을 사용한 코드 ⭕
+
+    ```javascript
+    function TextInputWithFocusButton(props) {
+        const inputElem = useRef(null);
+
+        const onButtonClick = () => {
+            // `current`는 mount된 input element를 가리킴
+            inputElem.current.focus();
+        };
+
+        return (
+            <>
+                <input ref={inputElem} type="text" />
+                <button onClick={onButtonClick}>
+                    Focus the input
+                </button>
+            </>    
+        );
+    }
+    ```
+
+    - useRef() Hook을 사용하여 버튼 클릭 시 input에 포커스를 하도록 하는 코드
+    - 초기 값으로 Null을 넣고, 결과로 반환된 inputElem이라는 reference 객체를 input 태그에 넣어줌. 
+    - 그리고, 버튼 클릭시 호출되는 함수에서 ✅inputElem.current를 통해 실제 element에 접근하여 focus 함수를 호출✅하고 있음
+
+
+<br />
+
+- 🙋‍♀️  useRef() Hook의 특징 🙋‍♀️ 
+    - 매번 렌더링 될 때마다 항상✅ 같은✅ 레퍼런스 객체를 반환한다는 특징을 가짐
+    - 내부의 데이터가 변경되었을 때 별도로 알리지 않음
+        - current 속성을 변경한다고 해서 재렌더링이 일어나지 ❌!! 오 정신 혼미

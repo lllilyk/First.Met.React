@@ -39,4 +39,8 @@ function Accommodate(props) {
     );
 }
 
+// 두 개의 useEffect() Hook이 호출되는데, 
+// 의존성 배열이 없는 useEffect() 훅이 호출된 이유 : 컴포넌트가 업데이트 되었기 때문
+// 의존성 배열이 있는 useEffect() 훅이 호출된 이유 : count 값이 변경되었기 때문
+
 export default Accommodate;

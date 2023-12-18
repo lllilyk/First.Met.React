@@ -333,7 +333,7 @@ Memoized value를 리턴하는 Hook
 - 🔻 useMemo() 사용법 🔻
     ```javascript
     const memoizedValue = useMemo(
-        // create 함수
+        // create 함수 호출
         () => {
             // 연산량이 높은 작업을 수행하여 결과를 반환
             return computeExpensiveValue(의존성 변수1, 의존성 변수2);
@@ -399,4 +399,115 @@ const memoizedValue = useMemo(
 -> ✅mount 시점에만 한 번✅ 값을 계산할 필요가 있을 경우에는 '의존성 배열에 빈 배열을 넣어' 사용하면 됨. 
 
 but, 대부분의 경우에는 useMemo() 훅에 의존성 배열의 변수들을 넣고⭕, 해당 변수들의 값이 바뀜에 따라 새로 값을 계산해야 할 경우에 사용한다는 것!⭕
+
+<br />
+
+## useCallback()
+useMemo() Hook과 유사하지만, 값이 아닌 함수🖍️를 반환하는 Hook
+
+: component가 렌더링될 때마다 매번 함수를 새로 정의하는 것이 아니라, ✅의존성 배열의 값이 바뀐 경우에만 함수를 새로 정의해서 리턴✅함.
+
+<br />
+
+- 🔻 useMemo() 사용법 🔻
+    ```javascript
+    const memoizedCallback = useCallback(
+        () => {
+            doSomething(의존성 변수1, 의존성 변수2);
+        },
+        [의존성 변수1, 의존성 변수2]
+    );
+    ```
+
+- useMemo() Hook과 마찬가지로 함수와 의존성 배열을 파라미터로 받음
+- useCallback() Hook에서는 파라미터로 받는 이 함수를 callback이라고 부름
+- ✅의존성 배열에 있는 변수 중 하나🖍️라도 변경되면, memoization된 callback 함수를 반환함✅ 
+
+<br />
+
+- '의존성 배열'에 따라 memoized 값을 반환한다는 점에서는 useMemo() Hook과 완전히 동일함.
+
+- 🙋‍♀️ 동일한 역할을 하는 두 줄의 코드 🙋‍♀️
+
+    ```
+    useCallback(함수, 의존성 배열);
+
+    useMemo(() => 함수, 의존성 배열);
+
+    ```
+
+<br />
+
+- useCallback() 훅을 사용하지 않고 컴포넌트 내에 함수를 정의하는 경우, 매번 렌더링이 일어날 때마다 함수가 새로 정의됨. 
+- useCallback() Hook을 사용하여 ✅특정 변수의 값이 변한 경우에만 함수를 다시 정의✅하도록 해서 불필요한 반복 작업을 없애❌주는 것!
+
+<br />
+<br />
+
+❌ useCallback() Hook을 사용하지 않은 경우 ❌
+
+```javascript
+import { useState } from "react";
+
+function ParentComponent(props) {
+    const [count, setCount] = useState(0);
+
+    // 재렌더링 될 때마다 매번 함수가 새로 정의됨
+    const handleClick = (event) => {
+        // 클릭 이벤트 처리
+    };
+
+    return (
+        <div>
+            <button
+                onClick={() => {
+                    setCount(count + 1);
+                }}
+            >
+                {count}
+            </button>
+            
+            <ChildComponent handleClick={handleClick} />
+        </div>
+    );
+}
+```
+
+- useCallback() Hook을 사용하지 않고, 컴포넌트 내에서 정의한 함수(handleClick)를 자식 컴포넌트의 props로 넘겨 사용하는 경우,
+    
+    부모 컴포넌트가 다시 렌더링이 될 때마다, 자식 컴포넌트도 다시 렌더링 됨. 
+
+- but, useCallback() Hook을 사용하면 특정 변수의 값이 변한 경우에만 함수를 다시 정의하게 되므로,
+
+    함수가 다시 정의되지 않는 경우에는 자식 컴포넌트도 재렌더링이 일어나지 않음. 
+
+<br />
+
+
+- ⭕ useCacllback()을 사용한 코드 ⭕
+
+    ```javascript
+        // component가 mount될 때만 함수가 정의됨
+        const handleClick = useCallback((event) => {
+            // 클릭 이벤트 처리
+        }, []);
+    ```
+
+    - 의존성 배열에 빈 배열이 들어감 
+        
+        : 컴포넌트가 처음 mount되는 시점에만 함수가 정의되고 이후에는 다시 정의되지 않음.
+        
+        : 자식 컴포넌트도 불필요하게 재렌더링이 일어나지 않게 됨
+
+
+<br />
+
+- ❌ useCacllback()을 사용하지 않은 코드 ❌
+
+    ```javascript
+        // 재렌더링 될 때마다 매번 함수가 새로 정의됨
+        const handleClick = (event) => {
+            // 클릭 이벤트 처리
+        };
+    ```
 

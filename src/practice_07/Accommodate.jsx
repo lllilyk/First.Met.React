@@ -20,7 +20,7 @@ function Accommodate(props) {
     useEffect(() => {
 
         // count값이 바뀔 때마다 useEffect() 훅이 호출되는데,
-        // 이때 용량이 가득 찼는지 아닌지의 상태를 isFull이라는 state에 저장함
+        // 이때 용량이 가득 찼는지 아닌지의 상태를 isFull(setIsFull)이라는 state에 저장함
         setIsFull(count >= MAX_CAPACITY);
         console.log(`Current count value: ${count}`);
     }, [count]);

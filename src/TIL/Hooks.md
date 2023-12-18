@@ -311,4 +311,92 @@ function UserStatusWithCounter(props) {
 - useState hook과 useEffect hook을 각각 두 개씩 사용!
 - 의존성 배열을 넣지 않았으니까 컴포넌트가 처음 렌더링될 때를 포함해서 매번 렌더링 될 때마다 이펙트가 실행됨
     - 클릭할 때마다 count값 1씩 증가
-- 음.. 저 function handleStatusChange를 어떻게 쓰는건지 아직도 props랑 개념이 잘 이해가 안되네 큰일남 추가 공부 필요(til도 다시 봐라)
+
+<br />
+
+## useMemo()
+Memoized value를 리턴하는 Hook
+
+<br />
+
+### Memoization
+최적화를 위해서 사용하는 개념
+- 📌 비용이 높은, 즉 연산량이 많이 드는 함수의 호출 결과를 저장해 두었다가 같은 입력값으로 함수를 호출하면,
+
+    새로 함수를 호출하지 않고 이전에 저장해놨던 호출 결과를 바로❗ 반환하는 것을 의미함.
+- 결과적으로 함수 호출 결과를 받기까지 걸리는 시간이 짧아질 뿐더러 불필요한 중복 연산도 하지 않기 때문에 컴퓨터의 자원을 적게 사용하게 됨
+- 이렇게 ✅Memoization이 된 결과값을 영어로 Memoized Value✅라고 부름 (쉽게는 '메모를 해두었다가 나중에 다시 사용하는 것'이라고 생각하면 됨)
+
+<br />
+<br />
+
+- 🔻 useMemo() 사용법 🔻
+    ```javascript
+    const memoizedValue = useMemo(
+        // create 함수
+        () => {
+            // 연산량이 높은 작업을 수행하여 결과를 반환
+            return computeExpensiveValue(의존성 변수1, 의존성 변수2);
+        };
+        // 의존성 배열
+        [의존성 변수1, 의존성 변수2]
+    );
+    ```
+
+- useMemo() Hook은 파라미터로 memoizedValue를 생성하는 create 함수🖍️와 의존성 배열🖍️을 받는데,  
+
+    ✅의존성 배열에 들어있는 변수가 변했을 경우에만 새로 create 함수를 호출하여 결과값을 반환✅하며, 그렇지 않은 경우에는 기존함수의 결과값을 그대로 반환함
+
+- useMemo() hook을 사용하면 컴포넌트가 다시 렌더링될 때마다 연산량이 높은 작업을 반복하는 것을 피할 수 있음
+
+    -> 결과적으로 빠른 렌더링 속도를 얻을 수 있음!
+
+<br />
+<br />
+
+❌ 주의 사항 ❌
+
+- useMemo() 훅으로 전달된 함수는 렌더링이 일어나는 동안🖍️ 실행되기 때문에, 일반적으로 ✅렌더링이 일어나는 동안 실행되서는 안되는 작업을 useMemo 함수에 넣으면 안됨✅!
+
+    Ex) useEffectHook에서 실행되어야 할 side effect
+        
+    : 서버에서 데이터를 받아오거나, 수동으로 DOM을 변경하는 작업 등은 렌더링이 일어나는 동안 실행되어서는 안되기 때문에 useMemo 훅 함수에 넣으면 안되고, 
+    
+    useEffect() 훅을 사용해야 함❗
+
+
+
+<br />
+<br />
+
+🙋‍♀️ 의존성 배열을 넣지 않을 경우 🙋‍♀️
+
+```javascript
+const memoizedValue = useMemo(
+    () => computeExpensiveValue(a, b)
+);
+```
+
+: 렌더링이 일어날 때마다 매번 create 함수가 실행되므로, useMemo 훅에 '의존성 배열'을 넣지 않고 사용하는 것은 아무런 의미가 ❌!!!
+
+
+<br />
+<br />
+
+🙋‍♀️ 의존성 배열에 빈 배열을 넣은 경우 🙋‍♀️
+
+```javascript
+const memoizedValue = useMemo(
+    () => {
+        return computeExpensiveValue(a, b);
+    },
+    []
+);
+```
+
+: 컴포넌트가 mount 될 때만 create 함수가 호출되므로, mount 이후에는 값이 변경되지 않음. 
+
+-> ✅mount 시점에만 한 번✅ 값을 계산할 필요가 있을 경우에는 '의존성 배열에 빈 배열을 넣어' 사용하면 됨. 
+
+but, 대부분의 경우에는 useMemo() 훅에 의존성 배열의 변수들을 넣고⭕, 해당 변수들의 값이 바뀜에 따라 새로 값을 계산해야 할 경우에 사용한다는 것!⭕
+

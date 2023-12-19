@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Accommodate from './practice_07/Accommodate';
+import ConfirmButton from './practice_08/ConfirmButton';
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <Accommodate />
+    <ConfirmButton />
   );
 
 // If you want to start measuring performance in your app, pass a function

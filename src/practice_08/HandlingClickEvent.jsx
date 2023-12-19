@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// ConfirmButton 컴포넌트를 함수 컴포넌트로 변경
+// ConfirmButton 컴포넌트를 함수 컴포넌트로 변경함
 // 클래스 컴포넌트인 ConfirmButton1, 2와 코드 잘 비교하기
 
 function HandlingClickEvent(props) {

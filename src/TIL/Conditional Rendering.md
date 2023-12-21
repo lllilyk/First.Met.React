@@ -97,7 +97,49 @@ function LoginControl(props) {
 - 컴포넌트가 대입된 변수를 return에 넣어 실제로 컴포넌트(로부터 생성된 리액트 엘리먼트)가 렌더링 되도록 함
 - 이렇게 element를 변수처럼 저장해서 사용하는 방법을 element variable이라고 부름
 
+<br />
+
+### Inline Conditions
+
+조건문을 코드 안에 집어넣는 것
+
+<br />
+
+📌 **Inline If** 📌
+
+if문을 필요한 곳에 직접 넣어 사용하는 방법
+
+- if문을 실제로 넣는 것은 아니지만, if문과 동일한 효과를 내기 위해 &&(논리) 연산자를 사용
+
+- ✅ &&(Logical AND) 연산(Operator) ✅ : 양쪽에 나오는 조건문이 모두 true인 경우에만 전체 결과가 true가 됨
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND
+
+- ✅ Short-Circuit Evaluation : 단축 평가 ✅
+        
+    따라서, 첫 번째 조건문이 true이면 두 번째 조건문을 평가하고, 
+    
+    첫 번째 조건문이 false이면 어차피 전체 결과가 false가 되므로 두 번째 조건문은 평가하지 않음
+
+    -> 결과가 정해져 있는 논리연산에서 굳이 불필요한 연산은 하지 않도록 하기 위해 사용하는 방법
 
 
+    ```javascript
+    function MailBox(props){
+        const unreadMessages = props.unreadMessages;
 
+        return (
+            <div>
+                <h1>안녕하세요!</div>
+                {unreadMessages.length > 0 && 
+                    <h2>
+                        현재 {unreadMessages.length}개의 읽지 않은 메시지가 있습니다.
+                    </h2>
+                }
+            </div>    
+        );
+    }
+    ```
+<br />
 
+  

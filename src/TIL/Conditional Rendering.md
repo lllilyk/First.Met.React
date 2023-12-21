@@ -19,7 +19,9 @@ function GuestGreeting(props) {
 
 ```
 
-### 회원인지 아닌지에 따라 이 두 개의 컴포넌트를 선택적으로 보여줘야 함
+<br />
+
+🔻 회원인지 아닌지에 따라 이 두 개의 컴포넌트를 선택적으로 보여줘야 함 🔻
 
 - 조건부 렌더링을 사용하여 이를 구현하는 코드
 
@@ -31,5 +33,62 @@ function Greeting(props) {
         return <UserGreeting />;
     }
     return <GuestGreeting />;
+}
+```
+
+<br />
+
+### Element Variable
+엘리먼트 변수는 이름 그대로, 리액트의 엘리먼트를 변수처럼 다루는 방법
+
+```javascript
+// 로그인 버튼을 나타내는 컴포넌트
+function LoginButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            로그인
+        </button>
+    );
+}
+
+// 로그아웃 버튼을 나타내는 컴포넌트
+function LogoutButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            로그아웃
+        </button>
+    );
+}
+```
+
+<br />
+
+🔻 사용자의 로그인 여부에 따라 두 개의 컴포넌트를 선택적으로 보여주는 코드 🔻
+
+```javascript
+function LoginControl(props) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLoginClick = () => {
+        setIsLoggedIn(true);
+    }
+
+    const handleLogoutClick = () => {
+        setIsLoggedIn(false);
+    }
+
+    let button;
+    if (isLoggedIn) {
+        button = <LogoutButton onClick={handleLogoutClick} />;
+    } else {
+        button = <LoginButton onClick={handleLoginClick}/>;
+    }
+
+    return (
+        <div>
+            <Greeting isLoggedIn={isLoggedIn} />
+            {button}
+        </div>    
+    )
 }
 ```

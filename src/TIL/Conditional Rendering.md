@@ -184,3 +184,81 @@ If-Else문을 필요한 곳에 직접 넣어서 사용하는 방법 (조건문�
             )
         }
         ```
+
+<br />
+
+### ❌ 컴포넌트를 렌더링하고 싶지 않다면?
+
+null을 리턴하면 됨. React에서는 null을 리턴하면 렌더링되지 않기 때문!
+
+```javascript
+function WarningBanner(props) {
+    if (!props.warning) {
+        return null;
+    }
+
+    return (
+        <div>경고!</div>
+    );
+}
+```
+
+- props.warning의 값이 false인 경우 null을 리턴. 
+- 즉, props.warning의 값이 true인 경우에만 경고 메시지를 출력하고, false인 경우에는 아무것도 출력하지 않는 컴포넌트임.
+
+<br />
+
+- 🔻 WarningBanner 컴포넌트를 실제로 사용하는 코드 🔻
+
+    ```javascript
+    function MainPage(props) {
+        const [showWarning, setShowWarning] = useState(false);
+
+        const handleToggleClick = () => {
+                setShowWarning(prevShowWarning => !prevShowWarning); 
+        }
+
+        return (
+            <div>
+                <WarningBanner warning={showWarning} />
+                <button onClick={handleToggleClick}>
+                    {showWarning ? '감추기' : '보이기'}
+                </button>
+            </div>        
+        )
+    }
+    ```
+
+    - MainPage 컴포넌트는 'showWarning'이라는 State의 값을 'WarningBanner' 컴포넌트의 props로 전달하여 
+    
+        showWarning의 값에 따라 경고문을 표시하거나 표시하지 않음.
+    
+    <br />
+    
+    ```javascript
+    const handleToggleClick = () => {
+        setShowWarning(prevShowWarning => !prevShowWarning);
+    }
+    ```
+    
+    - 'handleToggleClick' 함수는 클릭 이벤트 발생 시 실행되며, 이전 showWarning 값을 반전시켜 상태를 변경함
+    
+    <br />
+
+    ```javascript
+    <WarningBanner warning={showWarning} />
+    ```
+
+    - 'WarningBanner' 컴포넌트를 렌더링 함. 
+    
+        이때, showWarning 상태값을 'warning' prop으로 전달하여 'WarningBanner' 컴포넌트에서 경고를 보이거나, 감출 수 있게 함.
+
+    <br />
+
+    ```javascript
+    <button onClick={handleToggleClick}>
+        {showWarning ? '감추기' : '보이기'}
+    </button>
+    ```
+
+    - 버튼의 텍스트는 showWarning의 상태값에 따라 '감추기' 또는 '보이기'로 표시됨

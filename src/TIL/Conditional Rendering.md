@@ -107,7 +107,7 @@ function LoginControl(props) {
 
 📌 **Inline If** 📌
 
-if문을 필요한 곳에 직접 넣어 사용하는 방법
+if문을 필요한 곳에 직접 넣어 사용하는 방법 (보여주거나 안 보여주는 두 가지 경우가 있음)
 
 - if문을 실제로 넣는 것은 아니지만, if문과 동일한 효과를 내기 위해 &&(논리) 연산자를 사용
 
@@ -141,5 +141,46 @@ if문을 필요한 곳에 직접 넣어 사용하는 방법
     }
     ```
 <br />
+<br />
 
-  
+📌 **Inline If-Else** 📌
+
+If-Else문을 필요한 곳에 직접 넣어서 사용하는 방법 (조건문의 값에 따라서 다른 엘리먼트를 보여줄 때 사용)
+
+- 이를 위해서 삼항 연산자라고 부르는 물음표 연산자를 사용함
+
+    - 문자열을 넣어 사용한 경우
+        ```javascript
+        function UserStatus(props) {
+            return (
+                <div>
+                    이 사용자는 현재 <b>{props.isLoggedIn ? '로그인' : '로그인하지 않은'}</b> 상태입니다.
+                </div>
+            )
+        }
+        ```
+
+    - 엘리먼트를 넣어 사용한 경우
+        ```javascript
+        function LoginControl(props) {
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+            const handleLoginClick = () => {
+                setIsLoggedIn(true);
+            }
+
+            const handleLogoutClick = () => {
+                setIsLoggedIn(false);
+            }
+
+            return (
+                <div>
+                    <Greeting isLoggedIn={isLoggedIn} />
+                    {isLoggedIn
+                        ? <LogoutButton onClick={handleLogoutClick} />
+                        : <LoginButton onClick={handleLoginClick} />
+                    }
+                </div>
+            )
+        }
+        ```

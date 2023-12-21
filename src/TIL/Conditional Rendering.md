@@ -92,3 +92,12 @@ function LoginControl(props) {
     )
 }
 ```
+
+- isLoggedIn의 값에 따라서 button이라는 변수의 컴포넌트를 대입함
+- 컴포넌트가 대입된 변수를 return에 넣어 실제로 컴포넌트(로부터 생성된 리액트 엘리먼트)가 렌더링 되도록 함
+- 이렇게 element를 변수처럼 저장해서 사용하는 방법을 element variable이라고 부름
+
+
+
+
+

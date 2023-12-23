@@ -93,8 +93,8 @@ function LoginControl(props) {
 }
 ```
 
-- isLoggedIn의 값에 따라서 button이라는 변수의 컴포넌트를 대입함
-- 컴포넌트가 대입된 변수를 return에 넣어 실제로 컴포넌트(로부터 생성된 리액트 엘리먼트)가 렌더링 되도록 함
+- isLoggedIn의 값에 따라서 button이라는 변수에 적절한 컴포넌트(LogoutButton / LoginButton)를 대입함
+- 컴포넌트가 대입된 변수(button)를 return에 넣어 실제로 컴포넌트(로부터 생성된 리액트 엘리먼트)가 렌더링 되도록 함
 - 이렇게 element를 변수처럼 저장해서 사용하는 방법을 element variable이라고 부름
 
 <br />
@@ -109,6 +109,8 @@ function LoginControl(props) {
 
 if문을 필요한 곳에 직접 넣어 사용하는 방법 (보여주거나 안 보여주는 두 가지 경우가 있음)
 
+🔻 { } 중괄호를 사용하여 jsx 코드 안에서 직접 && 연산을 수행 🔻
+
 - if문을 실제로 넣는 것은 아니지만, if문과 동일한 효과를 내기 위해 &&(논리) 연산자를 사용
 
 - ✅ &&(Logical AND) 연산(Operator) ✅ : 양쪽에 나오는 조건문이 모두 true인 경우에만 전체 결과가 true가 됨
@@ -117,7 +119,7 @@ if문을 필요한 곳에 직접 넣어 사용하는 방법 (보여주거나 안
 
 - ✅ Short-Circuit Evaluation : 단축 평가 ✅
         
-    따라서, 첫 번째 조건문이 true이면 두 번째 조건문을 평가하고, 
+    첫 번째 조건문이 true이면 두 번째 조건문을 평가하고, 
     
     첫 번째 조건문이 false이면 어차피 전체 결과가 false가 되므로 두 번째 조건문은 평가하지 않음
 
@@ -140,6 +142,39 @@ if문을 필요한 곳에 직접 넣어 사용하는 방법 (보여주거나 안
         );
     }
     ```
+
+    - 만약, unreadMessages.length가 0보다 크면 && 연산 뒤에 나오는 h2 태그 부분이 렌더링⭕ 되겠지만, 
+
+         0보다 작다면 아무것도 렌더링 되지 않음❌
+
+<br />
+
+🙅🏻‍♀️ 주의할 점! 🙅🏻‍♀️
+
+&& 연산자를 사용할 때, 조건문에 false expression을 사용하면 뒤에 나오는 expression은 평가되지 않지만, 
+
+🔻 false expression의 `결과값`은 그대로 리턴 됨🔻!!!
+
+```javascript
+function Counter(props) {
+    const count = 0;
+
+    return (
+        <div>
+            {count && <h1>현재 카운트: {count}</h1>}
+        </div>
+    );
+}
+```
+- 예를 들어, 위 코드의 결과는 화면에 아무것도 안 나오는 것이 아니라, count의 결과값인 0이 들어가서 아래와 같이 됨.
+
+    ```javascript
+    <div>
+        0
+    </div>
+    ```
+
+
 <br />
 <br />
 

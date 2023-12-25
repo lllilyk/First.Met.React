@@ -79,6 +79,9 @@ function NumberList(props) {
 
     // numbers 배열의 각 요소(number)에 대해 map함수를 사용하여 listItem 생성
     const listItems = numbers.map((number) => 
+
+        // 리액트의 JSX 문법에서는 {}안의 이름은 현재 스코프(Scope)에 있는 변수나 함수의 이름을 참조함
+        // number는 Map함수의 콜백 함수 내에서 사용되는 매개변수의 이름으로, 임시 변수로서 map 함수에 의해 배열의 각 요소를 대표함
         <li>{number}</li>
     );
 
@@ -90,7 +93,13 @@ function NumberList(props) {
 
 const numbers = [1, 2, 3, 4, 5];
 ReactDOM.render(
-    <NumberList numbers={numbers} />
+
+    // NumberList 컴포넌트에 numbers 배열을 numbers라는 Props로 전달하여 렌더링
+    // 내가 헷갈린 부분
+    // NumberList 컴포넌트에 전달되는 props: numbers={numbers}
+    // {numbers}는 numbers라는 변수의 값([1, 2, 3, 4, 5])을 의미함
+    // 즉, numbers 배열이 전달되는 것
+    <NumberList numbers={ numbers } />
     document.getElementById('root');
 );
 ```

@@ -62,9 +62,35 @@ ReactDOM.render(
 
 - 1부터 5까지 들어있는 numbers라는 배열이 있음
 - map 함수를 사용해서 이 배열에 들어있는 각 숫자를 li 태그로 감싸 리턴함
-    - JSX에서는 중괄호를 사용하면 JavaScript 코드를 넣을 수 있으므로 이렇게 하면 각 숫자의 값이 li태그 안에 들어가게 됨
+    - 📍JSX에서는 중괄호를 사용하면 JavaScript 코드를 넣을 수 있으📍므로 이렇게 하면 각 숫자의 값이 li태그 안에 들어가게 됨
 - 이렇게 리턴된 listItems 배열은 총 5개의 element를 갖고 있게 됨
 
 - ReactDOM.render(...); 코드는 화면에 listItems를 렌더링하기 위해 사용됨
 - 결과적으로는 li 태그가 들어있는 listItems 배열을 ul 태그로 감싸서 렌더링하게 됨
 
+<br />
+
+위의 코드를 기본적인 형태를 가진 별도의 List 컴포넌트로 분리
+
+```javascript
+function NumberList(props) {
+    // props로부터 numbers 배열을 전달받음
+    const { numbers } = props;
+
+    // numbers 배열의 각 요소(number)에 대해 map함수를 사용하여 listItem 생성
+    const listItems = numbers.map((number) => 
+        <li>{number}</li>
+    );
+
+    // ul 태그 안에 listItems 배열을 포함시켜 완전한 l 반환
+    return (
+        <ul>{listItems}</ul>
+    );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+    <NumberList numbers={numbers} />
+    document.getElementById('root');
+);
+```

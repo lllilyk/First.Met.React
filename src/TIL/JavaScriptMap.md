@@ -40,6 +40,10 @@ const doubled = numbers.map((number) => number * 2);
 
 : map 함수를 사용하여 numbers 배열에 들어있는 각 숫자에 1을 곱한 값이 들어간 doubled라는 배열을 생성하는 코드
 
+<br />
+
+#### 🙋🏻‍♀️ map 함수는!? 🙋🏻‍♀️
+
 🔺 배열의 첫 번째 item부터 순서대로 각 item의 어떠한 연산을 수행한 뒤에 최종 결과를 배열✅로 만들어서 Return 해줌!! 🔺
 
 (아 근데 doubled가 배열이라고 정해주지 않았는데 배열이라니까 헷갈림)
@@ -70,11 +74,11 @@ ReactDOM.render(
 
 <br />
 
-위의 코드를 기본적인 형태를 가진 별도의 List 컴포넌트로 분리
+🔺 위의 코드를 기본적인 형태를 가진 별도의 List 컴포넌트로 분리 🔺
 
 ```javascript
 function NumberList(props) {
-    // props로부터 numbers 배열을 전달받음
+    // props 객체에서 numbers라는 속성을 분해하려고 시도
     const { numbers } = props;
 
     // numbers 배열의 각 요소(number)에 대해 map함수를 사용하여 listItem 생성
@@ -85,7 +89,7 @@ function NumberList(props) {
         <li>{number}</li>
     );
 
-    // ul 태그 안에 listItems 배열을 포함시켜 완전한 l 반환
+    // ul 태그 안에 listItems 배열을 포함시켜 완전한 list 반환
     return (
         <ul>{listItems}</ul>
     );

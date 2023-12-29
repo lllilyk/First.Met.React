@@ -103,3 +103,64 @@ function FruitSelect(props) {
 
     value로 선택된 옵션의 값이 들어있는 배열을 넣어주면 됨 
 
+<br />
+
+### 📌 File Input
+디바이스의 저장 장치로부터 하나 또는 여러 개의 파일을 선택할 수 있게 해주는 HTML 태그로, 보통은 서버로 파일을 업로드하거나 자바스크립트의 File API를 사용해서 파일을 다룰 때 사용함
+
+```javascript
+<input type="file">
+```
+
+- file input 태그는 그 값이 읽기 전용이기 때문에 React에서는 uncontrolled 컴포넌트가 됨
+- 이말인 즉슨, 값이 React의 통제를 받지 않음!
+
+<br />
+
+## Multiple Inputs
+만약, 하나의 컴포넌트에서 여러 개의 입력을 다루기 위해서는 어떻게 해야 할까?
+
+-> 여러 개의 state를 선언하여 각각의 입력에 대해 사용하면 됨
+
+```javascript
+function Reservation(props) {
+    const [haveBreakfast, setHaveBreakfast] = useState(true);
+    const [numberOfGuest, setNumberOfGuest] - useState(2);
+
+    const handleSubmit = (event) => {
+        alert(`아침식사 여부: ${haveBreakfast}, 방문객 수: ${numberOfGuest}`);
+        event.preventDefault();
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                아침식사 여부:
+                <input
+                    type="checkbox"
+                    checked={haveBreakfast}
+                    onChange={(event) => {
+                        setHaveBreakfast(event.target.checked);
+                    }} />
+            </label>
+            <br />
+            <label>
+                방문객 수:
+                <input
+                    type="number"
+                    value="{numberOfGuest}"
+                    onChange={(event) => {
+                        setHaveBreakfast(event.target.checked);
+                    }} />
+            </label>
+            <button type="submit">제출</button>
+        </form>
+    );
+}
+``` 
+
+- 아침식사 선택 유무를 입력받기 위한 input 태그는 type이 체크박스로 되어있고 값이 변경되면 setHaveBreakfast라는 함수를 통해 값을 업데이트 함
+- 방문객수를 입력받기 위한 input 태그는 type이 number로 되어 있고 값이 변경되면 setNumberOfGuest라는 함수를 통해 값을 업데이트 함
+- class 컴포넌트에서는 setState 함수 하나로 모든 state의 값을 업데이트했지만,
+
+    함수 컴포넌트에서는 각 state의 변수마다 set 함수가 따로 존재하기 때문에 위와 같은 형태로 각각의 set함수를 사용해서 구현하면 ok!

@@ -39,10 +39,14 @@ function LoginLogout(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // 클릭 이벤트 핸들러
+    // LoginBtn / LogoutBtn의 클릭 이벤트를 처리하기 위해 정의
+    // 사용자가 버튼을 클릭할 때 실행되는 함수 이게 왜 헷갈리냐고!
+    // '또 로그인할게용' 버튼 클릭하면 호출되며, isLoggedIn의 상태를 true로 업데이트 함
     const handleClickLogin = () => {
         setIsLoggedIn(true);
     }
 
+    // '흠 로그아웃할게용' 버튼을 클릭했을 때 호출되며, isLoggedIn의 상태를 false로 업데이트 함
     const handleClickLogout = () => {
         setIsLoggedIn(false);
     }

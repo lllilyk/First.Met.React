@@ -161,19 +161,24 @@ if문을 필요한 곳에 직접 넣어 사용하는 방법 (보여주거나 안
 && 연산자를 사용할 때, 조건문에 false expression을 사용하면 뒤에 나오는 expression은 평가되지 않지만, 
 
 🔻 false expression의 `결과값`은 그대로 리턴 됨🔻!!!
+- false expression이란?
+    - count 변수의 값이 0인 경우를 의미함
+    - falsy 기억해.. 0, -0 
 
-```javascript
-function Counter(props) {
-    const count = 0;
+    ```javascript
+    function Counter(props) {
+        const count = 0;
 
-    return (
-        <div>
-            {count && <h1>현재 카운트: {count}</h1>}
-        </div>
-    );
-}
-```
+        return (
+            <div>
+                {count && <h1>현재 카운트: {count}</h1>}
+            </div>
+        );
+    }
+    ```
+
 - 예를 들어, 위 코드의 결과는 화면에 아무것도 안 나오는 것이 아니라, count의 결과값인 0이 들어가서 아래와 같이 됨.
+- {count} 부분이 실제 카운트 값으로 대체되어 화면에 표시되는 것
 
     ```javascript
     <div>

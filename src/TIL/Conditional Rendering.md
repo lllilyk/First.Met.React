@@ -261,9 +261,18 @@ function WarningBanner(props) {
     function MainPage(props) {
         const [showWarning, setShowWarning] = useState(false);
 
+        // Toggle
+        // : 원래는 스위치나 버튼을 눌러서 상태나 기능을 켜고 끄는 동작을 의미함
+        // React에서 상태(state)가 토글되면, 특정 상태 값이 두 가지(ex. true/false) 중 한 가지로 교체되는 것을 의미함
+
+        // setShowWarning 함수는 Arrow Function을 통해 호출되며, 이 함수는 이전 상태(prevShowWarning)를 인자로 받음
+        // !prevShowWarning은 이전 상태의 반대 상태를 의미. 
         const handleToggleClick = () => {
                 setShowWarning(prevShowWarning => !prevShowWarning); 
         }
+        // 이렇게 되면, 버튼을 클릭할 때마다 상태가 토글되므로 showStatus값이 true->false, false->true로 변경됨 
+        // 즉, handleToggleClick 함수는 버튼을 클릭할 때마다 setShowing 상태를 토글하는 역할을 함
+        // 이전 상태 값을 이용하여 현재 상태를 업데이트하고, 이를 통해 버튼의 텍스트가 변경됨 + showTitle 컴포넌트의 렌더링 여부 결정
 
         return (
             <div>

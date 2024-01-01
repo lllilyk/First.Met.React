@@ -24,7 +24,7 @@ function ShowPage(props) {
                 onClickYes={onClickYes}
                 onClickNo={onClickNo}
             />
-            <div style={{ padding: 5 }}>조~~~~~아써!</div>
+            <div style={{ padding: 5 }}>흐름 이해하기</div>
         </div>
     );
 }

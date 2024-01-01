@@ -9,7 +9,7 @@ const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <FirstSongOf2024 />
+    <ShowPage />
   );
 
 // If you want to start measuring performance in your app, pass a function

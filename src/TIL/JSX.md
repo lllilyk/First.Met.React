@@ -48,4 +48,61 @@ function Welcome(props) {
 
 <br />
 
+ ## JSX와 JavaScript 차이 알기
+ 1. 일반 JavaScript로 DOM 요소 생성하기
  
+    ```javascript
+    const heading = document.createElement('h1');
+    heading.textContent = 'Hello, World!';
+    document.body.appendChild(heading);
+    ```
+
+    - 순수한 JavaScript를 사용하여 h1 요소를 생성하고, 그 내부에 텍스트 설정 후 문서의 body에 추가하는 코드
+
+<br />
+
+2. JSX로 React 컴포넌트 생성하기
+
+    ```jsx
+    function Greeting() {
+    return <h1>Hello, World!</h1>;
+    }   
+    ```
+
+<br />
+
+### 차이점
+1. 문법
+    - 일반 JavaScript
+    
+    : DOM 요소를 생성하고 조작하기 위해 'document.createElement()'와 같은 DOM API를 사용함. 
+
+    - JSX 
+    
+    : HTML과 유사한 구문을 사용하여 React 컴포넌트를 정의함. 
+
+<br />
+
+2. 사용 환경
+    - 일반 JavaScript
+    
+    : 웹 브라우저의 스크립트로서 실행됨
+
+    - JSX 
+    
+    : Babel과 같은 도구를 사용하여 JavaScript로 변환된 후에 웹 브라우저에서 실행됨. 
+
+<br />
+
+3. 추가 기능
+    - JSX
+
+    : JavaScript의 기능을 확장하여 사용할 수 있음. 
+
+    ex. JSX에서는 {}를 사용하여 JavaScript 표현식 삽입 가능!
+
+<br >
+
+✅ 총 정리 ✅
+
+일반 JavaScript는 DOM 조작에 특화되어 있고, JSX는 React 컴포넌트의 정의와 UI 구성에 특화되어 있음!

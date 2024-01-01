@@ -38,7 +38,7 @@ function Welcome(props) {
 
 <br />
 
-## 주의할 점
+## 📌 주의할 점 📌
 ### Babel
 - JSX는 JavaScritp내에서 실행되므로, React 프로젝트에서는 JSX코드를 JavaScript로 변환해주는 도구(Babel)가 필요함
 
@@ -71,7 +71,7 @@ function Welcome(props) {
 
 <br />
 
-### 차이점
+### 🙋‍♀️ 차이점 🙋‍♀️
 1. 문법
     - 일반 JavaScript
     
@@ -106,3 +106,53 @@ function Welcome(props) {
 ✅ 총 정리 ✅
 
 일반 JavaScript는 DOM 조작에 특화되어 있고, JSX는 React 컴포넌트의 정의와 UI 구성에 특화되어 있음!
+
+<br />
+
+## Babel
+JavaScript의 트랜스파일러(transpiler)로, 최신의 ECMAScript 표준에 따라 작성된 JavaScript 코드를 이전 버전의 JavaScript 코드로 변환해주는 도구.
+
+<br />
+
+### 🔺 Babel의 주요 특징 🔺
+1. 최신 JavaScript 지원
+
+    : 최신 ECMAScript 표준 (예: ES6, ES7, ES8 등)에 추가된 새로운 기능들을 사용하려는 개발자들이 이전 버전의 JavaScript로 변환할 수 있게 해줌
+
+<br />
+
+2. 플러그인 시스템
+
+    : 플러그인을 통해 다양한 기능을 제공하며, 사용자가 필요한 기능만 선택하여 Babel의 동작을 확장할 수 있게 해줌
+
+<br />
+
+3. 트랜스파일링
+
+    : 트랜스파일링(transpiling)을 통해 하나의 코드를 다른 형태의 코드로 변환.
+
+    예를 들어, 최신의 JavaScript 코드를 오래된 JavaScript 코드로 변환하거나, TypeScript 코드를 JavaScript 코드로 변환하는 작업 등이 가능! 오!
+
+<br />
+
+### 🔻 Babel의 사용 목적 🔻
+1. 브라우저 호환성
+
+    : 모든 웹 브라우저가 최신 ECMAScript 기능을 지원하지 않기 때문에, Babel을 사용하여 코드를 이전 버전의 JavaScript로 변환하여 브라우저 호환성 문제를 해결 가능
+
+<br />
+
+2. 프론트엔드 프레임워크/라이브러리
+
+    : React, Vue, Angular와 같은 프론트엔드 라이브러리나 프레임워크는 Babel을 사용하여 개발되며, 이를 통해 최신의 JavaScript 기능을 활용하면서도 브라우저 호환성을 유지할 수 있음
+
+<br />
+
+3. 개발 환경 설정
+
+    : Babel은 개발 환경 설정에서 주로 사용되며, 웹팩(Webpack), 바벨-로더(Babel-loader)와 같은 도구와 함께 사용되어 프로젝트의 빌드 및 번들링 과정에서 자동으로 코드를 트랜스파일링함 !의문 해결!
+
+<br />
+
+✅ 총 정리 ✅
+Babel은 최신의 JavaScript 코드를 이전 버전의 JavaScript로 변환하여 브라우저 호환성 문제를 해결하고, 다양한 플러그인을 통해 확장된 기능을 제공하는 JavaScript 트랜스파일러 도구다!

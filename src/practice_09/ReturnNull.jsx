@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 // null을 리턴하도록 해서 컴포넌트의 렌더링 막기
 // 아.. 컴포넌트명은 꼭 대문자로 시작하자..
+// Warning: <showTitle /> is using incorrect casing. 
+// Use PascalCase for React components, or lowercase for HTML elements.
 function ShowTitle(props) {
     if(!props.status) {
         return null;
@@ -11,7 +13,7 @@ function ShowTitle(props) {
         );
 }  
 
-function FirstSong(props) {
+function FirstSongOf2024(props) {
     const [showStatus, setShowStatus] = useState(false);
 
     const handleToggleClick = () => {
@@ -28,4 +30,4 @@ function FirstSong(props) {
     )
 }
 
-export default FirstSong;
+export default FirstSongOf2024;

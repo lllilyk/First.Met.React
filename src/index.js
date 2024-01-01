@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ShowPage from './practice_09/ShowPage';
 import Calculator from './chapter_12/Calculator';
-import FeelingChange from './practice_09/ConditionalRenderingPractice';
+import FeelingChange from './practice_09/ElementVariablePractice';
 const rootNode = document.getElementById('root');
 const root = ReactDOM.createRoot(rootNode);
 

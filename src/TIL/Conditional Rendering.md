@@ -35,6 +35,9 @@ function Greeting(props) {
     return <GuestGreeting />;
 }
 ```
+- props로 들어오는 isLoggedIn의 값이 true인지 false인지에 따라 해당하는 컴포넌트를 리턴함
+- 여기서 JavaScript의 truthy와 falsy에 대해 알아야 할 필요가 있음
+- **TruthyAndFalsy.md 참고**
 
 <br />
 
@@ -45,6 +48,11 @@ function Greeting(props) {
 // 로그인 버튼을 나타내는 컴포넌트
 function LoginButton(props) {
     return (
+        // 버튼 element 생성 & 클릭 이벤트 핸들러로 props.onClick 함수를 연결
+        // props.onClick : 부모 컴포넌트에서 LoginButton 컴포넌트에 전달된 onClick의 props임
+        // 정리
+        // '로그인'이라는 텍스트가 표시된 버튼을 생성하는 LoginButton 함수 컴포넌트를 정의
+        // 이 버튼을 클릭하면, 부모 컴포넌트에서 전달된 onClick 함수가 실행됨
         <button onClick={props.onClick}>
             로그인
         </button>

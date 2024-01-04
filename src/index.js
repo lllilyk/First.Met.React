@@ -1,15 +1,13 @@
 import React from 'react';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import BestMovieList from './practice_10/BestMovieList';
-const root = createRoot(document.getElementById('root'));
+import Calculattor from './chapter_12/Calculattor';
+const rootNode = document.getElementById('root');
+const root = ReactDOM.createRoot(rootNode);
 
   root.render(
-    <StrictMode>
-      <BestMovieList />
-    </StrictMode>
+      <Calculattor />
   );
 
 // If you want to start measuring performance in your app, pass a function

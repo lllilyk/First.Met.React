@@ -70,6 +70,13 @@ React로 개발하다 보면 하나의 데이터를 여러 개의 컴포넌트�
         return (
             <fieldset>
                 <legend>
+                    // { } : 중괄호 { } 안에서는 JavaScript 표현식을 사용할 수 있음
+                    // props로 전달된 scale값을 이용하여 scaleNames 객체에서 해당하는 단위를 가져오는 역할을 함
+                    // props.scale이 'c'일 경우 '섭씨' 표시
+
+                    // [ ] : 객체 속성에 동적으로 접근하기 위한 JavaScript 문법
+                    // props.scale 변수를 통해 동적으로 객체의 속성을 선택할 수 있음!
+                    // 즉, 사용자가 입력한 온도의 단위를 표시하기 위해 동적으로 단위를 선택하는 역할을 하는 코드
                     온도를 입력해주세용(단위:{scaleNames[props.scale]}):
                 </legend>
                 <input value={temperature} onChange={handleChange} />
@@ -124,6 +131,7 @@ React로 개발하다 보면 하나의 데이터를 여러 개의 컴포넌트�
             return '';
         }
         const output = convert(input);
+        //output 값을 소수점 셋째자리에서 반올림하는 코드
         const rounded = Math.round(output * 1000) / 1000;
         return rounded.toString();
     }

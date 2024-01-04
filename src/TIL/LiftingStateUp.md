@@ -1,5 +1,5 @@
 ## Lifting State Up
-💫 여러 개의 컴포넌튿들 사이에서 state 공유하기 💫
+💫 여러 개의 컴포넌트들 사이에서 state 공유하기 💫
 
 React로 개발하다 보면 하나의 데이터를 여러 개의 컴포넌트에서 표현해야하는 경우가 종종 생기는데,
 
@@ -8,7 +8,7 @@ React로 개발하다 보면 하나의 데이터를 여러 개의 컴포넌트�
 <br />
 
 ### Shared State
-Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여러 개의 하위(자식) 컴포넌트에서 공통적으로 사용하는 경우를 의미함
+✅ Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여러 개의 하위(자식) 컴포넌트에서 공통적으로 사용하는 경우를 의미함 ✅ 
 
 <br />
 
@@ -47,7 +47,7 @@ Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여�
     ```
     - state로 온도 값(temperature)을 하나 가지고 있는 컴포넌트
     - 사용자로부터 입력을 받기 위해서 input 태그를 사용한 Controlled Component 형태로 구현되어 있음
-    - 사용자가 온도 값을 변경할ㄹ 때마다 handleChange 함수가 호출되고, setTemperatue 함수를 통해 온도 값을 가지고 있는 Temperature라는 이름의 State를 업데이트 함
+    - 사용자가 온도 값을 변경할 때마다 handleChange 함수가 호출되고, setTemperatue 함수를 통해 온도 값을 가지고 있는 Temperature라는 이름의 State를 업데이트 함
     - State의 온도 값은 BoilingVerdict 컴포넌트에 Celsius라는 이름의 prop으로 전달됨
 
 <br />
@@ -117,6 +117,8 @@ Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여�
 6. 온도 변환 함수를 호출하는 함수
     ```javascript
     function tryConvert(temperature, convert) {
+        // parseFloat 함수
+        // 문자열을 부동 소수점 숫자로 변환하는데 사용됨(ex. 문자열 "3.14"를 숫자 3.14로 변환.)
         const input = parseFloat(temperature);
         if (Number.isNaN(input)) {
             return '';
@@ -128,6 +130,31 @@ Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여�
     ```
     - 온도 값과 변환하는 함수를 파라미터로 받아서 값을 변환시켜 리턴해주는 함수
     - 만약 숫자가 아닌 값을 입력하면 empty String을 리턴하도록 예외처리 됨
+
+    <br />
+   
+    - parseFloat 함수
+        ```javascript
+        const str = "3.14";
+        const num = parseFloat(str);
+
+        console.log(num); // 3.14
+        
+        // 숫자로 변환할 수 없는 부분이 있는 경우 NaN(Not a Number)을 반환
+        // abc는 부동 소수점 숫자로 변환 불가능하므로
+        const str2 = "abc 2.5";
+        const num2 = parseFloat(str2);
+
+        console.log(num2); // NaN 
+        ```
+
+        - 주의할 점
+
+        : parseFloat는 숫자로 시작하고 문자열로 끝나는 경우, 숫자에 해당하는 부분까지는 변환되고 그 나머지가 무시됨. 
+
+        숫자로 변환할 수 없는 문자열이 있다고 해서 모두 변환되지 않는 것은 아님!
+
+        ex. "2.34 abc"라면 2.34는 변환됨 <- 문자열의 앞쪽에서 숫자 부분을 찾고, 문자열이 더 이상 숫자가 아닌 부분이 나오면 파싱을 멈춤
 
 <br />
 
@@ -230,6 +257,7 @@ Shared State는 어떤(부모) 컴포넌트의 State에 있는 데이터를 여�
     - TemperatureInput 컴포넌트를 사용하는 부분에서는 각 단위로 변환된 온도 값과 단위를 props로 넣어줌
     - 값이 변경되었을 때 업데이트하기 위한 함수를 onTemperatureChange에 넣어줌
     - 따라서, 섭씨 온도가 변경되면 단위가 'c'로 변경되고, 화씨 온도가 변경되면 단위가 'f'로 변경됨
+    - 오 근데 또 봐도 헷갈리는데...
 
 <br />
 

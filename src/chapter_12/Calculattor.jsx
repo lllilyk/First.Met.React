@@ -29,11 +29,11 @@ function TemperatureInput(props) {
 }
 
 function toCelsius(fahrenheit) {
-    return (fahrenheit - 32) * 5 / 9;
+    return ((fahrenheit - 32) * 5) / 9;
 }
 
 function toFahrenheit(celsius) {
-    return (celsius * 9 / 5) + 32;
+    return (celsius * 9) / 5 + 32;
 }
 
 function tryConvert(temperature, convert) {
@@ -67,11 +67,11 @@ function Calculattor(props) {
     return (
         <div>
             <TemperatureInput 
-                scale="c" 
+                scale='c'
                 temperature={celsius}
                 onTemperatureChange={handleCelsiusChange} />
             <TemperatureInput 
-                scale="f"
+                scale='f'
                 temperature={fahrenheit}
                 onTemperatureChange={handleFahrenheitChange} />
             <BoilingVerdict

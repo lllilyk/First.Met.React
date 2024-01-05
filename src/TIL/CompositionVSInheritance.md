@@ -1,6 +1,4 @@
-## Composition vs Inheritance
-
-### Composition(합성)
+## Composition(합성)
 
 여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것을 의미함
 
@@ -10,9 +8,11 @@ Ex) airbnb -> 컴포넌트 A와 컴포넌트 B를 합쳐서 페이지 컴포넌�
 
 ### 조합 방법에 따라 나뉘는 컴포지션 사용 기법
 
-1. Containment : 하위 컴포넌트를 포함하는 형태의 합성 방법
+## 1. Containment
 
-    사용 방법 : React 컴포넌트의 props에 기본적으로 들어있는 Children 속성을 사용하면 됨
+: 하위 컴포넌트를 포함하는 형태의 합성 방법
+
+- 사용 방법 : React 컴포넌트의 props에 기본적으로 들어있는 Children 속성을 사용하면 됨
 
     ```jsx
     function FancyBorder(props) {
@@ -92,3 +92,43 @@ Ex) airbnb -> 컴포넌트 A와 컴포넌트 B를 합쳐서 페이지 컴포넌�
     - 화면을 왼쪽과 오른쪽으로 분할해서 보여주는 SplitPane 컴포넌트
     - App 컴포넌트에서 SplitPane 컴포넌트를 사용하고 있는데 여기에서 left, right라는 두 개의 props를 정의하여 그 안에 각각 다른 컴포넌트를 넣어주고 있음
 
+<br />
+
+## 2. Specialization
+
+: 범용적인 개념을 구별이 되도록 구체화하는 것
+
+- 범용적으로 쓸 수 있는 컴포넌트를 만들어 놓고, 이를 특수화시켜서 컴포넌트를 사용하는 Composition 방법
+
+    'WelcomeDialog는 Dialog의 특별한 케이스이다'
+
+    - 객체 지향 언어 : 상속(Inheritance)을 사용하여 Specialization 구현
+    - 리액트 : 합성(Composition)을 사용하여 Specialization 구현
+
+    ```jsx
+    function Dialog(props) {
+        return (
+            <FancyBorder color="blue">
+                <h1 className="Dialog-title">
+                    {props.title}
+                </h1>
+                <p className="Dialog-message">
+                    {props.message}
+                </p>
+            </FancyBorder>
+        );
+    }
+
+    function WelcomeDialog(props) {
+        return (
+            <Dialog
+                title="어서오세요"
+                message="우리 사이트에 방문하신 것을 환영합니다!"
+            />
+        );
+    }
+    ```
+    - WelcomeDialog : Dialog라는 범용적인 의미를 가진 컴포넌트를 사용하는 컴포넌트
+    - Dialog 컴포넌트는 title, message 두 가지 props를 가지고 있고 이를 어떻게 사용하느냐에 따라서 경고 또는 인삿말 Dialog가 될 수도 있음
+
+<br />

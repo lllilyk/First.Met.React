@@ -132,3 +132,54 @@ Ex) airbnb -> 컴포넌트 A와 컴포넌트 B를 합쳐서 페이지 컴포넌�
     - Dialog 컴포넌트는 title, message 두 가지 props를 가지고 있고 이를 어떻게 사용하느냐에 따라서 경고 또는 인삿말 Dialog가 될 수도 있음
 
 <br />
+
+## Containment와 Specialization 같이 사용하기
+
+```jsx
+funtion Dialog(props) {
+    return (
+        <FancyBorder color="blue">
+            <h1 className="Dialog-title">
+                {props.title}
+            </h1>
+            <p className="Dialog-message">
+                {props.message}
+            </p>
+            {props.children}
+        </FancyBorder>
+    );
+}
+
+function SignUpDialog(props) {
+    const [nickname, setNickname] = useState('');
+
+    const handleChange = (event) => {
+        setNickName(event.target.value);
+    }
+
+    const handleSignUp = () => {
+        alert(`어서오세요, ${nickname}님`);
+    }
+
+    return (
+        <Dialog
+            title="화성 탐사 프로그램"
+            message="닉네임을 입력해주세요">
+            <input
+                value={nickname}
+                onChange={handleChange} />
+            <button onClick={handleSignUp}>
+                가입하기
+            </button>
+        </Dialog>
+    );
+}
+```
+- Dialog 컴포넌트에 {props.children} 추가해줌으로써 하위 컴포넌트가 다이얼로그 하단에 렌더링 됨
+- Dialog 컴포넌트를 사용하는 SignUpDialog 컴포넌트를 살펴보면 Specialization을 위한 props인 title과 message에 값을 넣어주고 있으며,
+
+    사용자로부터 닉네임을 입력받고 가입을 유도하기 위해 input과 button 태그가 들어가 있음
+    - 이 두 개의 태그는 props.childeren으로 전달되어 Dialog에 표시됨! 아!
+- 이런 형태로 Containment와 Specialization을 동시에 사용할 수 있다~!
+
+<br />

@@ -3,13 +3,12 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Calculattor from './chapter_12/Calculattor';
-import Calculator from './practice_12/Calculator';
+import ProfileCard from './chapter_13/ProfileCard';
 const root = createRoot(document.getElementById('root'));
 
   root.render(
     <StrictMode>
-      <Calculator />
+      <ProfileCard />
     </StrictMode>
   );
 

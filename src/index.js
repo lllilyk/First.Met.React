@@ -3,12 +3,12 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ProfileCard from './chapter_13/ProfileCard';
+import MovieCard from './chapter_13/MovieCard';
 const root = createRoot(document.getElementById('root'));
 
   root.render(
     <StrictMode>
-      <ProfileCard />
+      <MovieCard />
     </StrictMode>
   );
 

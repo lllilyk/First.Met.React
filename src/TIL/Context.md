@@ -120,3 +120,36 @@ function ThemedButton(props) {
     
 - 다른 레벨의 많은 컴포넌트가 특정 데이터를 필요로 하는 경우에 주로 사용됨.
 
+<br />
+
+### Context를 사용하기 전에 고려할 점
+컴포넌트와 Context가 연동되면 재사용성이 떨어지기 때문에, 
+다른 레벨의 많은 컴포넌트가 데이터를 필요로 하는 경우가 아니라면 기존에 사용하던 방식대로 props를 통해 데이터를 전달하는 📌컴포넌트 컴포지션📌 방법이 더 적절함
+
+<br />
+🔖 Element Variable
+
+```jsx
+function Page(props) {
+    const user = props.user;
+
+    const userLink = (
+        <Link href={user.permalink}>
+            <Avatar user={user} size={props.avatarSize} />
+        </Link>
+    );
+
+    // Page 컴포넌트는 PageLayout 컴포넌트를 렌더링
+    // 이때 props로 userLink를 함께 전달함.
+    return <PageLayout userLink={userLink} />;
+}
+
+//PageLayout 컴포넌트는 NavigationBar 컴포넌트를 렌더링
+<PageLayout userLink={...} />
+
+// NavigationBar 컴포넌트는 props로 전달받은 userLink element를 리턴
+<NavigationBar userLink={...} />
+```
+- 이렇게 하면 가장 상위 레벨에 있는 페이지 컴포넌트만 아바타 컴포넌트에서 필요로 하는 유저와 아바타 사이즈에 대해 알고 있으면 됨
+     - 이런 방식은 중간 레벨의 컴포넌트를 통해 전달해야 하는 props를 없애고 코드를 더욱 간결하게 만들어 줌. 
+- 그런데 또 이런 방식은 데이터가 많아질수록 상위 컴포넌트에 몰리기 때문에 상위 컴포넌트는 점점 더 복잡해지고 하위 컴포넌트는 너무 유연해지게 된다는 단점이 있음.

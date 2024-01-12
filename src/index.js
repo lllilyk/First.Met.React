@@ -2,13 +2,13 @@ import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import ShowCards from './practice_13/ShowCards';
+import reportWebVitals from './reportWebVitals';\
+import DarkOrLight from './chapter_14/DarkOrLight';
 const root = createRoot(document.getElementById('root'));
 
   root.render(
     <StrictMode>
-      <ShowCards />
+      <DarkOrLight />
     </StrictMode>
   );
 

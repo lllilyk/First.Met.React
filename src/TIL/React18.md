@@ -84,3 +84,53 @@ startTransition(() => {
 - 사용자의 입력을 화면에 보여주는 것은 긴급하게 처리되어야 할 업데이트이기 때문에 기존과 동일하게 상태 업데이트를 진행함. 
 - 그리고 이후에 사용자 입력에 따른 결과를 보여주는 것은 아주 긴급하게 처리하지는 않아도 되는 부분이므로 startTransition 함수를 사용해서 Transition 업데이트로 처리함. 
     - Transition 업데이트는 긴급하지 않은 것으로 처리되기 때문에 그 사이에 더 긴급한 업데이트가 들어오면 중단될 수 있음.
+
+<br />
+
+## Suspense
+### Code Splitting
+React로 컴포넌트를 작성하다 보면, 웹 사이트의 규모가 커지면서 컴포넌트의 사이즈도 커지게 됨
+
+때문에, 웹 브라우저에서 이런 큰 컴포넌트를 한 번에 로딩하려고 하면 시간이 오래 걸리는 문제가 있었음. 
+
+-> 개발자들이 이 문제를 해결하기 위해서 컴포넌트의 코드를 여러 조각으로 분리하는 Code Splitting이라는 기법을 적용하게 됨. 
+
+    이 분리된 조각은 'Lazy Loading', 'Dynamic Loading'이라고 부르는 동적 로딩 기법을 적용하여 웹 사이트의 반응 속도를 높일 수 있게 됨
+
+<br />
+
+### Suspense
+: 2018년에 리액트 버전 16.6이 릴리즈될 때 처음 등장한 '컴포넌트'
+
+❗️ 리액트에서 Suspense 컴포넌트가 하는 역할
+
+: 하위 컴포넌트(children)가 준비되기 전까지 렌더링을 중단하고, 하위 컴포넌트가 준비된 이후에 렌더링을 시킴으로써 사용자 경험을 향상시켜줌
+
+<br />
+
+[ Suspense를 사용한 예시 코드 ]
+
+```jsx
+import { lazy, Suspense } from 'react';
+import LoadingSpinner from './LoadinngSpinner';
+const OtherComponent = lazy(()=> import('./OtherComponent'));
+
+function MyComponent(props) {
+    return (
+        <Suspense fallback={<LoadingSpinner />}>
+            <OtherComponent />
+        </Suspense> 
+    );
+}
+
+export default MyComponent;
+```
+
+- 이렇게 코드를 작성하면 OtherComponent가 준비되기 전까지 fallback 속성에 들어가 있는 LoadingSpinner라는 컴포넌트를 화면에 보여주고, 
+
+    OtherComponent가 준비되면 그때 OtherComponent를 화면에 보여주게 됨. 
+
+- 기존의 Suspense는 이렇게 Client에서 Code Splitting과 함께 제한적으로만 사용되었는데,
+
+    React 버전 18에서는 Suspense를 서버 렌더링과 제한적으로 데이터 패칭에서도 사용할 수 있도록 업데이트 됨. 
+

@@ -10,13 +10,16 @@ react-router-dom은 이러한 routing을 쉽게 구현할 수 있도록 React �
     <Routes>
         <Route index element={<MainPage />} />
         <Route path="places" element={<PlacePage />} />
-        <Route path="games" element={<GamePage />}>
+        <Route path="games" element={<GamePage />} />
+        <Route path="house/:houseId" element={<HouseList />} />
     </Routes>
 </BrowserRouter>
 ```
 - 경로 값 없이 그냥 사이트 메인으로 접속하게 되면 `index`라는 prop을 가진 Route로 라우팅 됨.
-    - `MainPage` 컴포넌트가 렌더링되어 보이게 됨
-- `/places`로 접속하면 `GamePage` 컴포넌트가 렌더링되어 화면에 나오게 됨. 
+    - 인덱스 경로인 `/` 경로로 접속하면 `MainPage` 컴포넌트가 렌더링되어 보이게 됨
+- `/games`로 접속하면 `GamePage` 컴포넌트가 렌더링되어 화면에 나오게 됨. 
+- `house/:houseId` 여기에서 :(콜론)houseId는 동적으로 변하는 파라미터를 위한 값
+    - 경로에 이렇게 콜론을 사용하고 아이디를 입력하면 실제 컴포넌트에서 useParams 훅을 사용해 아이디로 해당 값을 가져올 수 있음
 
 <br />
 

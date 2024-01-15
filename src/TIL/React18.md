@@ -134,3 +134,50 @@ export default MyComponent;
 
     React 버전 18에서는 Suspense를 서버 렌더링과 제한적으로 데이터 패칭에서도 사용할 수 있도록 업데이트 됨. 
 
+<br />
+
+## 클라이언트와 서버 렌더링 API 업데이트
+### React DOM Client
+기존 방식(react 버전17)
+```jsx
+import React from 'react';
+import React from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
+```
+
+<br />
+
+새로운 방식(react 버전18)
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+);
+```
+- react-dom/client라는 패키지가 새롭게 추가됨
+- `createRoot` 함수를 사용한 렌더링
+
+<br />
+
+### 리액트 DOM 서버
+- renderToPipeableStream
+
+    : NodeJS 환경에서 스트리밍을 위한 함수
+
+- renderToReadableStream
+
+    : Edge runtime 환경(Ex. Deno, Cloudflare workers)을 위한 함수
+

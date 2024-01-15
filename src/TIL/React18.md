@@ -181,3 +181,16 @@ root.render(
 
     : Edge runtime 환경(Ex. Deno, Cloudflare workers)을 위한 함수
 
+<br />
+
+## Strict Mode
+React의 `Strict Mode`는 개발 모드일 때 잠재적인 버그를 찾을 수 있게 해주는 모드
+
+리액트 버전 18에서는 strict mode의 동작이 변경되었는데, 
+
+개발 모드에서 strict mode를 사용하게 되면 컴포넌트를 언마운트(unMount) 시켰다가 다시 한 번 마운트(Mount) 시키게 됨.
+
+-> 컴포넌트 생명 주기 함수들이 예상과 다르게 여러 번 호출될 수 있음(컴포넌트가 여러 번 마운트 되어도 문제가 생기지 않도록 개발하는 것이 중요)
+
+
+
